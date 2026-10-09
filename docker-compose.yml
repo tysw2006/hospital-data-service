@@ -7,8 +7,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword   # root 계정 비밀번호
       MYSQL_DATABASE: medical_data        # 자동으로 생성될 데이터베이스 이름
-      MYSQL_USER: hosp_user               # 우리가 사용할 계정
-      MYSQL_PASSWORD: hosp_password       # 계정 비밀번호
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}       # 계정 비밀번호
     ports:
       - "3308:3306"                       # DBeaver 접속용 포트 매핑
     command:
