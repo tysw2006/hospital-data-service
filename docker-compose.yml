@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: hospital_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword   # root 계정 비밀번호
+      MYSQL_DATABASE: medical_data        # 자동으로 생성될 데이터베이스 이름
+      MYSQL_USER: hosp_user               # 우리가 사용할 계정
+      MYSQL_PASSWORD: hosp_password       # 계정 비밀번호
+    ports:
+      - "3308:3306"                       # DBeaver 접속용 포트 매핑
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql            # 도커를 껐다 켜도 데이터가 날아가지 않게 저장
+
+volumes:
+  db_data:
